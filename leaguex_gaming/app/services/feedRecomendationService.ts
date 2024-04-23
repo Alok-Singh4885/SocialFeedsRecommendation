@@ -4,14 +4,14 @@ import { PostsColumns } from '../models/postModels';
 import { userFollowTxnColumns } from '../models/user_follow_txn';
 
 interface RecommendedPost {
-    postId: number;
+    post_id: number;
     text: string;
-    userId: number;
+    user_id: number;
     likes: number;
     sport_id: number;
     comments: number;
     timestamp: Date;
-    popularityScore: number;
+    popularity_score: number;
 }
 
 const getfeedRecomendationService = async (userId: number) => {
@@ -59,17 +59,17 @@ const getfeedRecomendationService = async (userId: number) => {
 
         // Map filtered posts to RecommendedPost format and calculate popularity score
         const recommendedPosts: RecommendedPost[] = filteredPosts.map(post => ({
-            postId: post.id,
+            post_id: post.id,
             sport_id: post.sport_id,
             text: post.text!,
-            userId: post.userId,
+            user_id: post.userId,
             likes: post.likes!,
             comments: post.comments!,
             timestamp: post.created,
-            popularityScore: calculatePopularityScore(post.likes!, post.comments!)
+            popularity_score: calculatePopularityScore(post.likes!, post.comments!)
         }));
 
-        recommendedPosts.sort((a, b) => b.popularityScore - a.popularityScore || b.timestamp.getTime() - a.timestamp.getTime());
+        recommendedPosts.sort((a, b) => b.popularity_score - a.popularity_score || b.timestamp.getTime() - a.timestamp.getTime());
 
         return recommendedPosts.slice(0, 10);
     } catch (error) {
