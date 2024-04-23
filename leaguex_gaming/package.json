@@ -1,0 +1,28 @@
+{
+  "name": "leaguex_gaming",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon app.ts",
+    "local": "NODE_ENV=local PORT=4000 npx ts-node-dev app.ts",
+    "ts-node-dev": "ts-node-dev app.ts",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles config/**/*.json dist/",
+    "copy-env": "copyfiles .env dist/",
+    "build": "npm run clean && npx tsc && npm run copy-files && npm run copy-env",
+    "test": "NODE_ENV=local PORT=4002 npx mocha -r ts-node/register/transpile-only --exit 'tests/test.ts'",
+    "test-api": "NODE_ENV=local PORT=4002 npx mocha -r ts-node/register/transpile-only --exit 'tests/test-apis.ts'",
+    "script": "bash scripts/scriptRunner.sh"
+  },
+  "author": "Alok Pratap Singh",
+  "contributors": [],
+  "license": "ISC",
+  "dependencies": {
+    "cowsay": "^1.6.0",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
+  }
+}
