@@ -11,13 +11,8 @@ const DB_DATABASE: any = envLoaded.DB_DATABASE?.toString()
 const DB_USERNAME: any = envLoaded.DB_USERNAME
 const DB_PASSWORD: any = envLoaded.DB_PASSWORD
 const DB_DIALECT : any = envLoaded.DB_DIALECT as Dialect
-console.log("Loaded ENV ")
-console.log(DB_USERNAME)
-console.log(process.env)
+
 const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
-    // host: DB_HOST,
-    // password : '',
-    // dialect: 'mysql' 
     database : DB_DATABASE,
     username : DB_USERNAME,
     password : '',

@@ -5,9 +5,8 @@ import  asyncHandler  from '../../../asyncHandler';
 import * as feedRecomendationService from "../services/feedRecomendationService"
 
 const getfeedRecomendation = async (req:Request, res: Response) => {
-    console.log(`testt111`)
+    
     const  userId  = Number(req?.query?.user_id);
-    console.log(`testt222`)
 
     const data = await feedRecomendationService.getfeedRecomendationService(userId)
 

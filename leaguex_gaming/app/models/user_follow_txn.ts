@@ -6,6 +6,7 @@ export interface user_follow_txnAttributes {
   id: number;
   user_id: number;
   follower_id?: number;
+  post_id?: number;
   status: '0' | '1';
   created: Date;
   updated: Date;
@@ -15,18 +16,20 @@ export interface user_follow_txnAttributes {
 export const userFollowTxnColumns = {
   ID: 'id',
   USER_ID: 'user_id',
-  FOLLOWER_ID: 'follower_id'
+  FOLLOWER_ID: 'follower_id',
+  POST_ID: 'post_id'
 }
 
 export type user_follow_txnPk = "id";
 export type user_follow_txnId = user_follow_txn[user_follow_txnPk];
-export type user_follow_txnOptionalAttributes = "id" | "follower_id" | "status" | "created" | "updated";
+export type user_follow_txnOptionalAttributes = "id" | "follower_id" | "post_id" | "status" | "created" | "updated";
 export type user_follow_txnCreationAttributes = Optional<user_follow_txnAttributes, user_follow_txnOptionalAttributes>;
 
 export class user_follow_txn extends Model<user_follow_txnAttributes, user_follow_txnCreationAttributes> implements user_follow_txnAttributes {
   id!: number;
   user_id!: number;
   follower_id?: number;
+  post_id?: number;
   status!: '0' | '1';
   created!: Date;
   updated!: Date;
@@ -41,6 +44,9 @@ export class user_follow_txn extends Model<user_follow_txnAttributes, user_follo
   getUser!: Sequelize.BelongsToGetAssociationMixin<users>;
   setUser!: Sequelize.BelongsToSetAssociationMixin<users, usersId>;
   createUser!: Sequelize.BelongsToCreateAssociationMixin<users>;
+    likes: undefined;
+    comments: undefined;
+    text: undefined;
 
   static initModel(sequelize: Sequelize.Sequelize): typeof user_follow_txn {
     return sequelize.define('user_follow_txn', {
@@ -63,6 +69,14 @@ export class user_follow_txn extends Model<user_follow_txnAttributes, user_follo
       allowNull: true,
       references: {
         model: 'users',
+        key: 'id'
+      }
+    },
+    post_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'posts',
         key: 'id'
       }
     },

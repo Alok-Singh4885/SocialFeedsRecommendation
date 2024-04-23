@@ -17,6 +17,14 @@ module.exports = {
         },
         allowNull: false,
       },
+      post_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'posts',
+          key: 'id'
+        },
+      },
       follower_id: {
         type: Sequelize.INTEGER(11),
         references: {

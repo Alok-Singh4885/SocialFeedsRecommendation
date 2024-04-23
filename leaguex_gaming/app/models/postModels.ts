@@ -20,8 +20,11 @@ export interface postsAttributes {
 export const PostsColumns = {
     ID: 'id',
     USER_ID: 'user_id',
+    TEXT: 'text',
     SPORT_ID: 'sport_id',
-    EVENT_ID: 'event_id'
+    EVENT_ID: 'event_id',
+    LIKES : 'likes',
+    COMMENTS : 'comments'
 }
   
 
