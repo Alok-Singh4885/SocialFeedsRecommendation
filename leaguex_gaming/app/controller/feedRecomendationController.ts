@@ -10,8 +10,6 @@ const getfeedRecomendation = async (req:Request, res: Response) => {
     const  userId  = +req.params.user_id;
 
     const data = await feedRecomendationService.getfeedRecomendationService(userId)
-    console.log(JSON.stringify(data))
-    console.log("In Service")
     
     setDataInReis(req.originalUrl, data) // Is an async process so that I/O is not blocked
 

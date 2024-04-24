@@ -2,7 +2,7 @@
  * Created By Alok Pratap Singh 23-04-2024
  */
 
-// const joi = require("joi");
+const joi = require("joi");
 import { Request, Response, NextFunction } from 'express';
 
 export function validateFields(req: any, res: any, schema: any) {
