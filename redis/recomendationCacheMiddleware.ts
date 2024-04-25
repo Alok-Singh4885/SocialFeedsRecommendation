@@ -7,5 +7,7 @@ export async function recommendationsMiddleware(req: Request, res: Response, nex
     if(!cacheData){
         return next()
     }
-    return res.status(200).json(cacheData)
+    // return res.status(200).json(cacheData)
+    res.locals.cacheData = cacheData;
+    next();
 }

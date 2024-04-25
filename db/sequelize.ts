@@ -13,9 +13,9 @@ const DB_PASSWORD: any = envLoaded.DB_PASSWORD
 const DB_DIALECT : any = envLoaded.DB_DIALECT as Dialect
 
 const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
-    database : DB_DATABASE,
+    host: DB_HOST,
     username : DB_USERNAME,
-    password : '',
+    password : DB_PASSWORD,
     dialect: 'mysql' 
 });
 

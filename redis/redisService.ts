@@ -1,8 +1,10 @@
 import * as redis from "redis"
-const redisClient = redis.createClient()
+const redisHostUrl = `redis://redis:6379`
+const redisClient = redis.createClient({
+    url: redisHostUrl
+})
 
-
-const CACHE_EXPIRY_TIME = 60 * 60 * 3
+const CACHE_EXPIRY_TIME = 60 * 1
 
 export async function setDataInReis(key: string, data: any){
     try{

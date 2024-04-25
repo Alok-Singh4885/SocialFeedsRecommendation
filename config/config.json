@@ -1,8 +1,9 @@
 {
   "username": "root",
-  "password": "",
+  "password": "alokps",
   "database": "leagueX",
-  "host": "127.0.0.1",
-  "dialect": "mysql"
+  "host": "db",
+  "dialect": "mysql",
+  "seederStorageTableName": "sequelize_seeder_data"
 }
 
